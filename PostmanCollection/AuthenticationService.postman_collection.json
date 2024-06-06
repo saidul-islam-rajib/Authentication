@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "4dc31d11-6353-4575-9649-43492a21a5e6",
+		"name": "AuthenticationService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28003928"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Saidul Islam\",\r\n  \"lastName\": \"Rajib\",\r\n  \"email\": \"saidul.is.rajib@gmail.com\",\r\n  \"password\": \"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7090/auth/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7090",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"saidul.is.rajib@gmail.com\",\r\n  \"password\": \"Test@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7090/auth/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7090",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
