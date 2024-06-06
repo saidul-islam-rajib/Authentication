@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Api", "Sober.Api\Sober.Api.csproj", "{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Application", "Sober.Application\Sober.Application.csproj", "{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Contracts", "Sober.Contracts\Sober.Contracts.csproj", "{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Domain", "Sober.Domain\Sober.Domain.csproj", "{36152893-BF44-474B-80FB-1E9D65CC6272}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Infrastructure", "Sober.Infrastructure\Sober.Infrastructure.csproj", "{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{C3A57D4D-60A2-475B-BA39-95B089197703}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Weather", "Weather", "{8BCF3076-14C3-4021-8282-09E87FA0D222}"
+	ProjectSection(SolutionItems) = preProject
+		GetForcasts.http = GetForcasts.http
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{1B75EA43-4A57-42E6-B3B1-0835DD7D7929}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{AA4B0DDF-2A4D-44E7-9664-5A141C36989A}"
+	ProjectSection(SolutionItems) = preProject
+		Api.md = Api.md
+		Authentication.md = Authentication.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36152893-BF44-474B-80FB-1E9D65CC6272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36152893-BF44-474B-80FB-1E9D65CC6272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36152893-BF44-474B-80FB-1E9D65CC6272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36152893-BF44-474B-80FB-1E9D65CC6272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8BCF3076-14C3-4021-8282-09E87FA0D222} = {C3A57D4D-60A2-475B-BA39-95B089197703}
+		{AA4B0DDF-2A4D-44E7-9664-5A141C36989A} = {1B75EA43-4A57-42E6-B3B1-0835DD7D7929}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6314CCCA-4E8D-4D0A-9EB4-0A620D79B8B5}
+	EndGlobalSection
+EndGlobal
