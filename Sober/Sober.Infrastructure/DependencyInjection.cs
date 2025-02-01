@@ -13,63 +13,61 @@ using Sober.Infrastructure.Persistence.Repositories;
 using Sober.Infrastructure.Services;
 using System.Text;
 
-namespace Sober.Infrastructure
+namespace Sober.Infrastructure;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure(
+        this IServiceCollection services,
+       ConfigurationManager configuration)
     {
-        public static IServiceCollection AddInfrastructure(
-            this IServiceCollection services,
-           ConfigurationManager configuration)
-        {
-            services
-                .AddAuth(configuration)
-                .AddPersistance();
+        services
+            .AddAuth(configuration)
+            .AddPersistance();
 
-            services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-            return services;
-        }
-
-        public static IServiceCollection AddPersistance(
-            this IServiceCollection services)
-        {
-            services.AddDbContext<PortfolioDbContext>(options =>
-                options.UseSqlServer("Data Source=SAIDUL-INTERN;Initial Catalog=Portfolio;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
-
-            services.AddScoped<IUserRepository, UserRepository>();
-            //services.AddScoped<IMenuRepository, MenuRepository>();
-
-            return services;
-        }
-
-        public static IServiceCollection AddAuth(
-            this IServiceCollection services,
-            ConfigurationManager configuration)
-        {
-            var JwtSettings = new JwtSettings();
-            configuration.Bind(JwtSettings.SectionName, JwtSettings);
-
-
-            services.AddSingleton(Options.Create(JwtSettings));
-
-
-            services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
-
-            services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = JwtSettings.Issuer,
-                    ValidAudience = JwtSettings.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(JwtSettings.Secret))
-                });
-
-            return services;
-        }
-
-
+        services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        return services;
     }
+
+    public static IServiceCollection AddPersistance(
+        this IServiceCollection services)
+    {
+        services.AddDbContext<PortfolioDbContext>(options =>
+            options.UseSqlServer("Server=localhost;Database=AuthDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;"));
+
+        services.AddScoped<IUserRepository, UserRepository>();
+
+        return services;
+    }
+
+    public static IServiceCollection AddAuth(
+        this IServiceCollection services,
+        ConfigurationManager configuration)
+    {
+        var JwtSettings = new JwtSettings();
+        configuration.Bind(JwtSettings.SectionName, JwtSettings);
+
+
+        services.AddSingleton(Options.Create(JwtSettings));
+
+
+        services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
+
+        services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = JwtSettings.Issuer,
+                ValidAudience = JwtSettings.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(JwtSettings.Secret))
+            });
+
+        return services;
+    }
+
+
 }

@@ -6,8 +6,6 @@ namespace Sober.Infrastructure.Persistence
     {
         public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options) : base(options) { }
 
-        //public DbSet<Post> Posts { get; set; } = null!;
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
