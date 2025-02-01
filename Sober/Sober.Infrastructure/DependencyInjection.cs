@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -23,17 +24,26 @@ public static class DependencyInjection
     {
         services
             .AddAuth(configuration)
-            .AddPersistance();
+            .AddPersistance(configuration);
 
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         return services;
     }
 
     public static IServiceCollection AddPersistance(
-        this IServiceCollection services)
+        this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<PortfolioDbContext>(options =>
-            options.UseSqlServer("Server=localhost;Database=AuthDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;"));
+        var connectionString = configuration.GetConnectionString("Database");
+        //services.AddDbContext<PortfolioDbContext>(options =>
+        //    options.UseSqlServer("Server=localhost;Database=AuthDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;"));
+
+        services.AddDbContext<PortfolioDbContext>((sp, options) =>
+        {
+            options.AddInterceptors(
+                sp.GetServices<ISaveChangesInterceptor>());
+            options.UseSqlServer(connectionString);
+        });
+
 
         services.AddScoped<IUserRepository, UserRepository>();
 
