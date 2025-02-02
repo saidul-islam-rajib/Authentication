@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Sober.Application.Common.Interfaces.Authentication;
-using Sober.Application.Common.Interfaces.Services;
-using Sober.Domain.Entities.User;
+using Authentication.Application.Common.Interfaces.Authentication;
+using Authentication.Application.Common.Interfaces.Services;
+using Authentication.Domain.Entities.User;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Sober.Infrastructure.Authentication
+namespace Authentication.Infrastructure.Authentication
 {
     public class JwtTokenGenerator : IJwtTokenGenerator
     {

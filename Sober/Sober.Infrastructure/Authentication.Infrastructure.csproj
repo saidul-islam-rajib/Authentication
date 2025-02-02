@@ -20,7 +20,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Sober.Application\Sober.Application.csproj" />
+    <ProjectReference Include="..\Sober.Application\Authentication.Application.csproj" />
   </ItemGroup>
 
 </Project>

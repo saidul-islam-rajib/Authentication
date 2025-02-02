@@ -1,11 +1,10 @@
-﻿using Sober.Domain.Entities.User;
+﻿using Authentication.Domain.Entities.User;
 
-namespace Sober.Application.Common.Interfaces.Persistence
+namespace Authentication.Application.Common.Interfaces.Persistence;
+
+public interface IUserRepository
 {
-    public interface IUserRepository
-    {
-        User? GetUserByEmail(string email);
-        void Add(User user);
-        Task<bool> VerifyPasswordAsync(User user, string password);
-    }
+    User? GetUserByEmail(string email);
+    void Add(User user);
+    Task<bool> VerifyPasswordAsync(User user, string password);
 }

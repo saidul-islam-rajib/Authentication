@@ -6,17 +6,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Sober.Application.Common.Interfaces.Authentication;
-using Sober.Application.Common.Interfaces.Persistence;
-using Sober.Application.Common.Interfaces.Services;
-using Sober.Domain.Entities.User;
-using Sober.Infrastructure.Authentication;
-using Sober.Infrastructure.Persistence;
-using Sober.Infrastructure.Persistence.Repositories;
-using Sober.Infrastructure.Services;
+using Authentication.Application.Common.Interfaces.Authentication;
+using Authentication.Application.Common.Interfaces.Persistence;
+using Authentication.Application.Common.Interfaces.Services;
+using Authentication.Domain.Entities.User;
+using Authentication.Infrastructure.Authentication;
+using Authentication.Infrastructure.Persistence;
+using Authentication.Infrastructure.Persistence.Repositories;
+using Authentication.Infrastructure.Services;
 using System.Text;
 
-namespace Sober.Infrastructure;
+namespace Authentication.Infrastructure;
 
 public static class DependencyInjection
 {
@@ -37,16 +37,12 @@ public static class DependencyInjection
         this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("Database");
-        //services.AddDbContext<PortfolioDbContext>(options =>
-        //    options.UseSqlServer("Server=localhost;Database=AuthDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;"));
-
         services.AddDbContext<PortfolioDbContext>((sp, options) =>
         {
             options.AddInterceptors(
                 sp.GetServices<ISaveChangesInterceptor>());
             options.UseSqlServer(connectionString);
         });
-
 
         services.AddScoped<IUserRepository, UserRepository>();
 
@@ -81,6 +77,4 @@ public static class DependencyInjection
 
         return services;
     }
-
-
 }

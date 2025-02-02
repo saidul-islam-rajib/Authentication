@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sober.Domain.Entities.User;
+using Authentication.Domain.Entities.User;
 using System.Reflection;
 
-namespace Sober.Infrastructure.Persistence;
+namespace Authentication.Infrastructure.Persistence;
 
 public class PortfolioDbContext : DbContext
 {

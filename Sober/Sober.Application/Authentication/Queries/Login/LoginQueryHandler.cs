@@ -1,50 +1,49 @@
 ﻿using ErrorOr;
 using MediatR;
-using Sober.Application.Authentication.Common;
-using Sober.Application.Common.Interfaces.Authentication;
-using Sober.Application.Common.Interfaces.Persistence;
-using Sober.Domain.Common.Errors;
-using Sober.Domain.Entities.User;
+using Authentication.Application.Authentication.Common;
+using Authentication.Application.Common.Interfaces.Authentication;
+using Authentication.Application.Common.Interfaces.Persistence;
+using Authentication.Domain.Common.Errors;
+using Authentication.Domain.Entities.User;
 
-namespace Sober.Application.Authentication.Queries.Login
+namespace Authentication.Application.Authentication.Queries.Login;
+
+public class LoginQueryHandler
+    : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
-    public class LoginQueryHandler
-        : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
+    private readonly IUserRepository _userRepository;
+
+    public LoginQueryHandler(
+        IJwtTokenGenerator jwtTokenGenerator,
+        IUserRepository userRepository)
     {
-        private readonly IJwtTokenGenerator _jwtTokenGenerator;
-        private readonly IUserRepository _userRepository;
+        _jwtTokenGenerator = jwtTokenGenerator;
+        _userRepository = userRepository;
+    }
 
-        public LoginQueryHandler(
-            IJwtTokenGenerator jwtTokenGenerator,
-            IUserRepository userRepository)
+    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask;
+
+        // 1. Validate the user exits
+        if (_userRepository.GetUserByEmail(query.Email) is not User user)
         {
-            _jwtTokenGenerator = jwtTokenGenerator;
-            _userRepository = userRepository;
+            return Errors.Authentication.InvalidCredentials;
+        }
+        
+        // 2. Validate the password is correct
+        var isPasswordValid = await _userRepository.VerifyPasswordAsync(user, query.Password);            
+        if (!isPasswordValid)
+        {
+            return new[] { Errors.Authentication.InvalidCredentials };
         }
 
-        public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
-        {
-            await Task.CompletedTask;
+        // 3. Create JWT token
+        var token = _jwtTokenGenerator.GenerateToken(user);
 
-            // 1. Validate the user exits
-            if (_userRepository.GetUserByEmail(query.Email) is not User user)
-            {
-                return Errors.Authentication.InvalidCredentials;
-            }
-            
-            // 2. Validate the password is correct
-            var isPasswordValid = await _userRepository.VerifyPasswordAsync(user, query.Password);            
-            if (!isPasswordValid)
-            {
-                return new[] { Errors.Authentication.InvalidCredentials };
-            }
-
-            // 3. Create JWT token
-            var token = _jwtTokenGenerator.GenerateToken(user);
-
-            return new AuthenticationResult(
-                user,
-                token);
-        }
+        return new AuthenticationResult(
+            user,
+            token);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Sober.Infrastructure.Authentication
+﻿namespace Authentication.Infrastructure.Authentication
 {
     public class JwtSettings
     {

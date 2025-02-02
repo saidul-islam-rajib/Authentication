@@ -1,20 +1,19 @@
 ﻿using Mapster;
-using Sober.Application.Authentication.Commands.Register;
-using Sober.Application.Authentication.Common;
-using Sober.Application.Authentication.Queries.Login;
-using Sober.Contracts.Authentication;
+using Authentication.Application.Authentication.Commands.Register;
+using Authentication.Application.Authentication.Common;
+using Authentication.Application.Authentication.Queries.Login;
+using Authentication.Contracts.AuthenticationRequestResponse;
 
-namespace Sober.Api.Common.Mapping
+namespace Authentication.Api.Common.Mapping;
+
+public class AuthenticationMappingConfig : IRegister
 {
-    public class AuthenticationMappingConfig : IRegister
+    public void Register(TypeAdapterConfig config)
     {
-        public void Register(TypeAdapterConfig config)
-        {
-            config.NewConfig<RegisterRequest, RegisterCommand>();
-            config.NewConfig<LoginRequest, LoginQuery>();
+        config.NewConfig<RegisterRequest, RegisterCommand>();
+        config.NewConfig<LoginRequest, LoginQuery>();
 
-            config.NewConfig<AuthenticationResult, AuthenticationResponse>()
-                .Map(dest => dest, src => src.User);
-        }
+        config.NewConfig<AuthenticationResult, AuthenticationResponse>()
+            .Map(dest => dest, src => src.User);
     }
 }

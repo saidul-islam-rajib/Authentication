@@ -1,7 +1,6 @@
-﻿namespace Sober.Api.Http
+﻿namespace Authentication.Api.Http;
+
+public class HttpContextItemKeys
 {
-    public class HttpContextItemKeys
-    {
-        public const string Errors = "errors";
-    }
+    public const string Errors = "errors";
 }

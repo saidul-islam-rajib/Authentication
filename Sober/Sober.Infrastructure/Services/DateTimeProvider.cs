@@ -1,9 +1,8 @@
-﻿using Sober.Application.Common.Interfaces.Services;
+﻿using Authentication.Application.Common.Interfaces.Services;
 
-namespace Sober.Infrastructure.Services
+namespace Authentication.Infrastructure.Services;
+
+public class DateTimeProvider : IDateTimeProvider
 {
-    public class DateTimeProvider : IDateTimeProvider
-    {
-        public DateTime UtcNow => DateTime.UtcNow;
-    }
+    public DateTime UtcNow => DateTime.UtcNow;
 }

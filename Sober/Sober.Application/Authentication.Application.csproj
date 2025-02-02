@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sober.Domain\Sober.Domain.csproj" />
+    <ProjectReference Include="..\Sober.Domain\Authentication.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,8 @@
-﻿using Sober.Domain.Entities.User;
+﻿using Authentication.Domain.Entities.User;
 
-namespace Sober.Application.Common.Interfaces.Authentication
+namespace Authentication.Application.Common.Interfaces.Authentication;
+
+public interface IJwtTokenGenerator
 {
-    public interface IJwtTokenGenerator
-    {
-        string GenerateToken(User user);
-    }
+    string GenerateToken(User user);
 }

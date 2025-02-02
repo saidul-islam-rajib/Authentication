@@ -1,6 +1,6 @@
-using Sober.Api;
-using Sober.Application;
-using Sober.Infrastructure;
+using Authentication.Api;
+using Authentication.Application;
+using Authentication.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {

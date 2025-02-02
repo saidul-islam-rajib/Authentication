@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Api", "Sober.Api\Sober.Api.csproj", "{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Api", "Sober.Api\Authentication.Api.csproj", "{C99A540D-A4BA-4EC2-9CBE-0DB032713BBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Application", "Sober.Application\Sober.Application.csproj", "{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Application", "Sober.Application\Authentication.Application.csproj", "{0F892C06-F1BC-4458-A49C-3CD9E94AB22B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Contracts", "Sober.Contracts\Sober.Contracts.csproj", "{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Contracts", "Sober.Contracts\Authentication.Contracts.csproj", "{FD2A7FFF-7BC1-4BD8-AB9B-93EB96D6E808}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Domain", "Sober.Domain\Sober.Domain.csproj", "{36152893-BF44-474B-80FB-1E9D65CC6272}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Domain", "Sober.Domain\Authentication.Domain.csproj", "{36152893-BF44-474B-80FB-1E9D65CC6272}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sober.Infrastructure", "Sober.Infrastructure\Sober.Infrastructure.csproj", "{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Infrastructure", "Sober.Infrastructure\Authentication.Infrastructure.csproj", "{D3C7CF97-3B33-4EE3-A0FB-3DB1C14CB085}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{C3A57D4D-60A2-475B-BA39-95B089197703}"
 EndProject

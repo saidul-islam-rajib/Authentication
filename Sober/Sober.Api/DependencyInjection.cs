@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Sober.Api.Common.Errors;
-using Sober.Api.Common.Mapping;
+using Authentication.Api.Common.Errors;
+using Authentication.Api.Common.Mapping;
 
-namespace Sober.Api
+namespace Authentication.Api;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddPresentation(this IServiceCollection services)
     {
-        public static IServiceCollection AddPresentation(this IServiceCollection services)
-        {
 
-            services.AddControllers();
-            services.AddSingleton<ProblemDetailsFactory, PortfolioProblemDetailsFactory>();
+        services.AddControllers();
+        services.AddSingleton<ProblemDetailsFactory, PortfolioProblemDetailsFactory>();
 
-            services.AddMappings();
-            return services;
-        }
+        services.AddMappings();
+        return services;
     }
 }

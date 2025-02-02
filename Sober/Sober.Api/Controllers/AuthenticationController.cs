@@ -3,13 +3,13 @@ using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Sober.Application.Authentication.Commands.Register;
-using Sober.Application.Authentication.Common;
-using Sober.Application.Authentication.Queries.Login;
-using Sober.Contracts.Authentication;
-using Sober.Domain.Common.Errors;
+using Authentication.Application.Authentication.Commands.Register;
+using Authentication.Application.Authentication.Common;
+using Authentication.Application.Authentication.Queries.Login;
+using Authentication.Contracts.AuthenticationRequestResponse;
+using Authentication.Domain.Common.Errors;
 
-namespace Sober.Api.Controllers
+namespace Authentication.Api.Controllers
 {
     [Route("auth")]
     [AllowAnonymous]
@@ -20,7 +20,7 @@ namespace Sober.Api.Controllers
 
         public AuthenticationController(
             ISender mediator,
-            IMapper mapper = null)
+            IMapper mapper)
         {
             _mediator = mediator;
             _mapper = mapper;

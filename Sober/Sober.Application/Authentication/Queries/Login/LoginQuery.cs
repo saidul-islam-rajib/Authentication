@@ -1,12 +1,11 @@
 ﻿using ErrorOr;
 using MediatR;
-using Sober.Application.Authentication.Common;
+using Authentication.Application.Authentication.Common;
 
-namespace Sober.Application.Authentication.Queries.Login
-{
-    public record LoginQuery
-    (
-        string Email,
-        string Password
-    ) : IRequest<ErrorOr<AuthenticationResult>>;
-}
+namespace Authentication.Application.Authentication.Queries.Login;
+
+public record LoginQuery
+(
+    string Email,
+    string Password
+) : IRequest<ErrorOr<AuthenticationResult>>;

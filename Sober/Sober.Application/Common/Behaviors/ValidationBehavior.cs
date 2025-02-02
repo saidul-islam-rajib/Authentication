@@ -3,7 +3,7 @@ using FluentValidation;
 using MediatR;
 
 
-namespace Sober.Application.Common.Behaviors
+namespace Authentication.Application.Common.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse>
         : IPipelineBehavior<TRequest, TResponse>, IValidationBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>

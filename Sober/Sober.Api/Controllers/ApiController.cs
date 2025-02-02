@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Sober.Api.Http;
+using Authentication.Api.Http;
 
-namespace Sober.Api.Controllers
+namespace Authentication.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

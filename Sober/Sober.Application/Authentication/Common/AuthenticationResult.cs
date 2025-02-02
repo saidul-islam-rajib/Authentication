@@ -1,10 +1,9 @@
-﻿using Sober.Domain.Entities.User;
+﻿using Authentication.Domain.Entities.User;
 
-namespace Sober.Application.Authentication.Common
-{
-    public record AuthenticationResult
-    (
-        User User,
-        string Token
-    );
-}
+namespace Authentication.Application.Authentication.Common;
+
+public record AuthenticationResult
+(
+    User User,
+    string Token
+);
