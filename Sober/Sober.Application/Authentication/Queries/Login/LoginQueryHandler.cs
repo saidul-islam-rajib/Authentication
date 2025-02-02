@@ -31,9 +31,9 @@ public class LoginQueryHandler
         {
             return Errors.Authentication.InvalidCredentials;
         }
-        
+
         // 2. Validate the password is correct
-        var isPasswordValid = await _userRepository.VerifyPasswordAsync(user, query.Password);            
+        var isPasswordValid = await _userRepository.VerifyPasswordAsync(user, query.Password);
         if (!isPasswordValid)
         {
             return new[] { Errors.Authentication.InvalidCredentials };

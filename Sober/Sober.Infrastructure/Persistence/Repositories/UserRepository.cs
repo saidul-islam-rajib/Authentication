@@ -6,7 +6,7 @@ namespace Authentication.Infrastructure.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private readonly PortfolioDbContext _context;    
+    private readonly PortfolioDbContext _context;
     private readonly IPasswordHasher<User> _passwordHasher;
 
     public UserRepository(PortfolioDbContext context, IPasswordHasher<User> passwordHasher)
