@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Sober.Application.Common.Interfaces.Authentication;
 using Sober.Application.Common.Interfaces.Persistence;
 using Sober.Application.Common.Interfaces.Services;
+using Sober.Domain.Entities.User;
 using Sober.Infrastructure.Authentication;
 using Sober.Infrastructure.Persistence;
 using Sober.Infrastructure.Persistence.Repositories;
@@ -27,6 +29,7 @@ public static class DependencyInjection
             .AddPersistance(configuration);
 
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+        services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         return services;
     }
 

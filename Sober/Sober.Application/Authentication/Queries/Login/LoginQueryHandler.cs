@@ -31,9 +31,10 @@ namespace Sober.Application.Authentication.Queries.Login
             {
                 return Errors.Authentication.InvalidCredentials;
             }
-
+            
             // 2. Validate the password is correct
-            if (user.Password != query.Password)
+            var isPasswordValid = await _userRepository.VerifyPasswordAsync(user, query.Password);            
+            if (!isPasswordValid)
             {
                 return new[] { Errors.Authentication.InvalidCredentials };
             }

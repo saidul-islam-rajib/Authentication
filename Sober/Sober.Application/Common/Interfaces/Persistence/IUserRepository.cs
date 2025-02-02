@@ -6,5 +6,6 @@ namespace Sober.Application.Common.Interfaces.Persistence
     {
         User? GetUserByEmail(string email);
         void Add(User user);
+        Task<bool> VerifyPasswordAsync(User user, string password);
     }
 }
